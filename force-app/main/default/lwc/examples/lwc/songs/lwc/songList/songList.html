@@ -1,0 +1,9 @@
+<template>
+    <lightning-card  title="Song List">
+        <div class="list-container">
+            <template for:each={props.songs} for:item="song">
+                <c-song-card key={song.title} song={song}></c-song-card>
+            </template>
+        </div>
+    </lightning-card>
+</template>

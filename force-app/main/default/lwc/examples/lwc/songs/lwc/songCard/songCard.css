@@ -1,0 +1,17 @@
+.song-card{
+    padding: .8rem;
+    border: 1px solid #e8e5e5;
+    margin-bottom: .5rem;
+    border-radius: .3rem;
+}
+lightning-button{
+    float: right;
+    margin-top: -4px;
+}
+.song-name{
+    font-size: medium;
+    display: inline-block;
+}
+.selected{
+    background: #7794fd;
+}
