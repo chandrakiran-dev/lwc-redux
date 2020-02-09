@@ -7,6 +7,7 @@ import {registerListener, unregisterAllListeners} from 'c/lwcRedux';
 
 export default class Provider extends LightningElement {
     @api _store;
+    @api storeName;
     @track loadCompleted = false;
     @api 
     get store(){

@@ -1,0 +1,12 @@
+<template>
+    <lightning-card  title="Counter App">
+        <div class="container">
+            {props.counter}
+        </div>
+        <div slot="footer">
+            <lightning-button label="Increase" title="Non-primary action" onclick={props.increment} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button label="Reset" title="Non-primary action" onclick={props.reset} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button label="Decrease" title="Non-primary action" onclick={props.decrement} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

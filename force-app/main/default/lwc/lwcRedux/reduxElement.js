@@ -1,8 +1,16 @@
 import { LightningElement, track} from 'lwc';
 import {fireEvent} from './reduxHandler';
 import {bindActionCreators} from './lwcRedux';
-const getStore = () =>{
-    return fireEvent('getStore', {});
+const getStore = (storeName) =>{
+    const listener = fireEvent(storeName,'getStore', {});
+    let store;
+    try {
+        store = listener.callback.call(listener.thisArg, {});
+    } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error)
+    }
+    return store;
 }
 const prepareProps = (thisArg, store) => {
     const state = thisArg.mapStateToProp(store.getState());
@@ -11,12 +19,14 @@ const prepareProps = (thisArg, store) => {
 
 export default class ReduxElement extends LightningElement {
     @track props = {}
+    storeName;
     unsubscribe;
     currentState;
-    
+    storeName = this.mapStoreName();
     constructor(){
         super();
-        const store = getStore();
+        debugger;
+        const store = getStore(this.storeName);
         if(store){
             this.props = prepareProps(this, store);
             let actions = {};
@@ -26,6 +36,7 @@ export default class ReduxElement extends LightningElement {
             this.unsubscribe = store.subscribe(this.handleChange.bind(this))
         }
     }
+    
     parentDisconnectedCallback(){
         if(this.unsubscribe){
             this.unsubscribe();
@@ -36,7 +47,7 @@ export default class ReduxElement extends LightningElement {
     }
 
     forceUpdate(){
-        const store = getStore();
+        const store = getStore(this.storeName);
         if(store){
             this.props = prepareProps(this, store);
         }
@@ -44,12 +55,13 @@ export default class ReduxElement extends LightningElement {
     }
 
     handleChange() {
-        if(this.isUpdateRequired())
+        //debugger;
+        //if(this.isUpdateRequired())
             this.forceUpdate()
     }
     isUpdateRequired(){
         let previousState = Object.assign({}, this.currentState);
-        const store = getStore();
+        const store = getStore(this.storeName);
         if(store){
             this.currentState = store.getState()
         }

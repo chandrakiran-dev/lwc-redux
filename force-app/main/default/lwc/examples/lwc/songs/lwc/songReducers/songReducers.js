@@ -1,3 +1,4 @@
+import {SELECT_SONG_ACTION} from 'c/songConstant';
 const songReducer = (songs=null) => {
     if(songs == null){
         songs = [
@@ -10,7 +11,7 @@ const songReducer = (songs=null) => {
 }
 
 const selectedSongReducer = (selectedSong=null, action) => {
-    if(action.type === 'SELECT_SONG'){
+    if(action.type === SELECT_SONG_ACTION){
         return action.payload;
     }
     return selectedSong;

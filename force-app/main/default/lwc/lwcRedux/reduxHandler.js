@@ -3,30 +3,42 @@ export const registerListener = (eventName, callback, thisArg) => {
     if (!reduxEvent[eventName]) {
         reduxEvent[eventName] = [];
     }
-    reduxEvent[eventName] = { callback, thisArg};
-};
-
-export const unregisterListener = (eventName) => {
-    if (reduxEvent[eventName]) {
-        delete reduxEvent[eventName]
+    const duplicate = reduxEvent[eventName].find(listener => {
+        return listener.callback === callback && listener.thisArg === thisArg;
+    });
+    if (!duplicate) {
+        reduxEvent[eventName].push({ callback, thisArg});
     }
 };
 
-export const unregisterAllListeners = () => {
+export const unregisterListener = (eventName, callback, thisArg) => {
+    if (reduxEvent[eventName]) {
+        reduxEvent[eventName] = reduxEvent[eventName].filter(
+            listener =>
+                listener.callback !== callback || listener.thisArg !== thisArg
+        );
+    }
+};
+
+export const unregisterAllListeners = (thisArg) => {
     Object.keys(reduxEvent).forEach(eventName => {
-        reduxEvent[eventName] = []
+        reduxEvent[eventName] = reduxEvent[eventName].filter(
+            listener => listener.thisArg !== thisArg
+        );
     });
 };
 
-export const fireEvent = (eventName, payload) => {
+export const fireEvent = (storeName,eventName) => {
     if (reduxEvent[eventName]) {
-        const listener = reduxEvent[eventName];
-        try {
-            return listener.callback.call(listener.thisArg, payload);
-        } catch (error) {
-            // eslint-disable-next-line no-console
-            console.log('Error ->', error);
-        }
+        const listeners = reduxEvent[eventName];
+        let listenerToReturn;
+        listeners.forEach(listener => {
+            if (storeName === listener.thisArg.storeName){
+                listenerToReturn = listener;
+            }
+
+        });
+        return listenerToReturn;
     }
     return undefined; 
 };

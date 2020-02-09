@@ -1,10 +1,9 @@
-import { LightningElement, api} from 'lwc';
-import {createStore} from 'c/lwcRedux';
-import reducers from 'c/songReducers';
-import {combineReducers} from 'c/lwcRedux';
-import {STORE_NAME} from 'c/songConstant';
+import { LightningElement, api } from 'lwc';
+import {createStore, combineReducers} from 'c/lwcRedux';
+import reducers from 'c/counterReducers';
+import {STORE_NAME} from 'c/counterConstant';
 
-export default class SongContainer extends LightningElement {
+export default class CounterContainer extends LightningElement {
     @api store;
     storeName = STORE_NAME;
     initialize(){
@@ -24,5 +23,4 @@ export default class SongContainer extends LightningElement {
             return returnValue
         }
     }
-
 }
