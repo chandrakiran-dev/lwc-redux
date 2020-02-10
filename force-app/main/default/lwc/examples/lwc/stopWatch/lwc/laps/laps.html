@@ -1,7 +1,7 @@
 <template>
     <template if:true={props.laps}>
         <template iterator:it={props.laps}>
-            <c-lap-card key={it.value.milliSec} lap={it.value} index={it.index}></c-lap-card>
+            <c-lap-card key={it.value.milliSec} lap={it.value} index={it.index} length={props.laps.length}></c-lap-card>
         </template>
     </template>
 </template>

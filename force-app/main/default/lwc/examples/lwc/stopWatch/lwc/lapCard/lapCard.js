@@ -2,6 +2,7 @@ import { LightningElement, api, track } from 'lwc';
 
 export default class LapCard extends LightningElement {
     @api index;
+    @api length
     @track lapToShow;
     _lap;
     @api
@@ -17,6 +18,9 @@ export default class LapCard extends LightningElement {
             time = "0" + time;
         }
         return time;
+    }
+    get getName(){
+        return ('Lap ' + (this.length-this.index));
     }
 
 }
