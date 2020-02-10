@@ -25,7 +25,6 @@ export default class ReduxElement extends LightningElement {
     storeName = this.mapStoreName();
     constructor(){
         super();
-        debugger;
         const store = getStore(this.storeName);
         if(store){
             this.props = prepareProps(this, store);

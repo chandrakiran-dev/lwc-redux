@@ -1,0 +1,25 @@
+<template>
+    <lightning-card  title="Stop Watch App">
+        <div class="container">
+            {props.hour} : {props.min} : {props.sec} : {props.milliSec}
+        </div>
+        <div slot="footer">
+            <template if:false={props.interval}>
+                <lightning-button variant="success" label="Start" title="Non-primary action" onclick={props.start} class="slds-m-left_x-small"></lightning-button>
+            </template>
+            <template if:true={props.interval}>
+                <lightning-button variant="destructive" label="Stop" title="Non-primary action" onclick={props.stop} class="slds-m-left_x-small"></lightning-button>
+            </template>
+            <template if:false={props.interval}>
+                <lightning-button label="Reset" title="Non-primary action" onclick={props.reset} class="slds-m-left_x-small"></lightning-button>
+            </template>
+            <template if:true={props.interval}>
+                <lightning-button label="Lep" title="Non-primary action" onclick={props.createLap} class="slds-m-left_x-small"></lightning-button>
+            </template>
+        </div>
+    </lightning-card>
+    <div style="background:white; margin-top:-5px">
+        <c-laps></c-laps>
+    </div>
+    
+</template>
