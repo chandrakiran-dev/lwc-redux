@@ -1,11 +1,9 @@
 import { LightningElement, api } from 'lwc';
 import {createStore} from 'c/lwcRedux';
 import reducers from 'c/stopWatchReducers';
-import {STORE_NAME} from 'c/stopWatchConstant';
 
 export default class StopWatchContainer extends LightningElement {
     @api store;
-    storeName = STORE_NAME;
     initialize(){
         //const combineReducersInstance = combineReducers(reducers);
         this.store = createStore(reducers, this.logger);

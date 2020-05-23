@@ -1,6 +1,5 @@
 import { ReduxElement } from 'c/lwcRedux';
 import {increment, decrement, reset} from 'c/counterActions';
-import {STORE_NAME} from 'c/counterConstant';
 
 export default class Counter extends ReduxElement {
     mapStateToProp(state){
@@ -8,8 +7,5 @@ export default class Counter extends ReduxElement {
     }
     mapActionToProp(){
         return {increment, decrement, reset};
-    }
-    mapStoreName(){
-        return STORE_NAME;
     }
 }

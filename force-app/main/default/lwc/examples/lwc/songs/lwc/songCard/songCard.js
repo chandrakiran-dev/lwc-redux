@@ -1,7 +1,6 @@
 import { api } from 'lwc';
 import { ReduxElement } from 'c/lwcRedux';
 import { selectSong } from 'c/songActions';
-import {STORE_NAME} from 'c/songConstant';
 export default class SongCard extends ReduxElement {
     @api song={}
     mapStateToProp(state){
@@ -9,9 +8,6 @@ export default class SongCard extends ReduxElement {
     }
     mapActionToProp(){
         return {selectSong};
-    }
-    mapStoreName(){
-        return STORE_NAME;
     }
     handleClick(){
         this.props.selectSong(this.song);

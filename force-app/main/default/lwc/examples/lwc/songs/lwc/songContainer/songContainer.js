@@ -2,11 +2,9 @@ import { LightningElement, api} from 'lwc';
 import {createStore} from 'c/lwcRedux';
 import reducers from 'c/songReducers';
 import {combineReducers} from 'c/lwcRedux';
-import {STORE_NAME} from 'c/songConstant';
 
 export default class SongContainer extends LightningElement {
     @api store;
-    storeName = STORE_NAME;
     initialize(){
         const combineReducersInstance = combineReducers(reducers);
         this.store = createStore(combineReducersInstance, this.logger);

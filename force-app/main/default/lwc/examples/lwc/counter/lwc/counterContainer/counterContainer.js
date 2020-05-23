@@ -1,11 +1,9 @@
 import { LightningElement, api } from 'lwc';
 import {createStore, combineReducers} from 'c/lwcRedux';
 import reducers from 'c/counterReducers';
-import {STORE_NAME} from 'c/counterConstant';
 
 export default class CounterContainer extends LightningElement {
     @api store;
-    storeName = STORE_NAME;
     initialize(){
         const combineReducersInstance = combineReducers(reducers);
         this.store = createStore(combineReducersInstance, this.logger);

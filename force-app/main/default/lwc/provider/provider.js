@@ -3,11 +3,8 @@ import { loadScript } from 'lightning/platformResourceLoader';
 import reduxURL from '@salesforce/resourceUrl/redux';
 import reduxThunkURL from '@salesforce/resourceUrl/reduxThunk';
 
-import {registerListener, unregisterAllListeners} from 'c/lwcRedux';
-
 export default class Provider extends LightningElement {
     @api _store;
-    @api storeName;
     @track loadCompleted = false;
     @api 
     get store(){
@@ -24,17 +21,19 @@ export default class Provider extends LightningElement {
                 loadScript(this, reduxURL),
                 loadScript(this, reduxThunkURL)
             ]);
-            registerListener("getStore",this.getStore, this);
-            this.loadCompleted = true;
+            
         }
+        this.template.addEventListener('lwcredux__getstore', this.handleGetStore.bind(this));
         this.dispatchEvent(new CustomEvent('init'));
+        setTimeout(() =>{
+            this.loadCompleted = true;
+        })
     }
-
+    handleGetStore(event){
+        let callback = event.detail
+        callback(this._store);
+    }
     getStore(){
         return this._store;
-    }
-
-    disconnectedCallback(){
-        unregisterAllListeners(this);
     }
 }

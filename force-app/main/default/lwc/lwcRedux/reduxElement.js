@@ -1,16 +1,12 @@
 import { LightningElement, track} from 'lwc';
-import {fireEvent} from './reduxHandler';
 import {bindActionCreators} from './lwcRedux';
-const getStore = (storeName) =>{
-    const listener = fireEvent(storeName,'getStore', {});
-    let store;
-    try {
-        store = listener.callback.call(listener.thisArg, {});
-    } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log(error)
+const getStore = (thisArg, callback) =>{
+    const eventStore = new CustomEvent('lwcredux__getstore', { bubbles: true,composed: true, detail : (store)=>{
+        callback(store);
+    }})
+    if(eventStore){
+        thisArg.dispatchEvent(eventStore);
     }
-    return store;
 }
 const prepareProps = (thisArg, store) => {
     const state = thisArg.mapStateToProp(store.getState());
@@ -19,59 +15,38 @@ const prepareProps = (thisArg, store) => {
 
 export default class ReduxElement extends LightningElement {
     @track props = {}
-    storeName;
     unsubscribe;
     currentState;
-    storeName = this.mapStoreName();
-    constructor(){
-        super();
-        const store = getStore(this.storeName);
-        if(store){
-            this.props = prepareProps(this, store);
-            let actions = {};
-            if(this.mapActionToProp)
-                actions = this.mapActionToProp();
-            this.props = Object.assign({}, this.props, bindActionCreators(actions, store.dispatch))
-            this.unsubscribe = store.subscribe(this.handleChange.bind(this))
-        }
+    connectedCallback(){
+        getStore(this, (store) => {
+            if(store){
+                this.props = prepareProps(this, store);
+                let actions = {};
+                if(this.mapActionToProp){
+                    actions = this.mapActionToProp();
+                }   
+                this.props = Object.assign({}, this.props, bindActionCreators(actions, store.dispatch))
+                this.unsubscribe = store.subscribe(this.handleChange.bind(this))
+            }
+        })
     }
-    
-    parentDisconnectedCallback(){
+
+    disconnectedCallback(){
         if(this.unsubscribe){
             this.unsubscribe();
         }
     }
-    disconnectedCallback(){
-        this.parentDisconnectedCallback();
-    }
 
     forceUpdate(){
-        const store = getStore(this.storeName);
-        if(store){
-            this.props = prepareProps(this, store);
-        }
+        getStore(this, (store) => {
+            if(store){
+                this.props = prepareProps(this, store);
+            }
+        })
         this.props = Object.assign({}, this.props);
     }
 
     handleChange() {
-        //debugger;
-        //if(this.isUpdateRequired())
-            this.forceUpdate()
-    }
-    isUpdateRequired(){
-        let previousState = Object.assign({}, this.currentState);
-        const store = getStore(this.storeName);
-        if(store){
-            this.currentState = store.getState()
-        }
-        let previousProp = this.mapStateToProp(previousState);
-        let currentProp = this.mapStateToProp(this.currentState);
-
-        for (let key in previousProp) {
-            if (previousProp[key] !== currentProp[key]) {
-                return true
-            }
-        }
-        return false;
+        this.forceUpdate()
     }
 }

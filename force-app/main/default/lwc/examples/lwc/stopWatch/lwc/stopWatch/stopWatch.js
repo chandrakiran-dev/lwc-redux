@@ -1,11 +1,7 @@
 import { ReduxElement } from 'c/lwcRedux';
-import {STORE_NAME} from 'c/stopWatchConstant';
 import {start, stop, reset, createLap} from 'c/stopWatchAction';
 
 export default class StopWatch extends ReduxElement {
-    mapStoreName(){
-        return STORE_NAME;
-    }
     mapStateToProp(state){
         return {
             milliSec : this.checkTime(state.milliSec), 
