@@ -1,7 +1,7 @@
-import {ADD_TODO, CHANGE_TODO_STATUS} from 'c/todoAppConstant';
+import todo from "./todo";
+import filter from "./filter";
 
-const initialState = {
-    allIds: [],
-    byIds: {}
-};
-
+export default {
+    todo,
+    filter
+}

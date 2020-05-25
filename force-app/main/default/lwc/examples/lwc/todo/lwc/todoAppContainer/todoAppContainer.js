@@ -1,6 +1,6 @@
 import { LightningElement, api } from 'lwc';
 import {createStore, combineReducers} from 'c/lwcRedux';
-import reducers from 'c/todoReducers';
+import reducers from 'c/todoAppReducer';
 export default class TodoAppContainer extends LightningElement {
     @api store;
     initialize(){
