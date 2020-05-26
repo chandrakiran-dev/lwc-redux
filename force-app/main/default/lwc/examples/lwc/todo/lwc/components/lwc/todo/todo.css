@@ -1,0 +1,9 @@
+.inprogress{
+    border-left: .5rem solid #ffc800;
+}
+.incomplete{
+    border-left: .5rem solid #d0cfcd;
+}
+.completed{
+    border-left: .5rem solid #89e08c;
+}

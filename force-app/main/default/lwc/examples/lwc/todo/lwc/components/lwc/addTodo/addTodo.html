@@ -1,7 +1,7 @@
 <template>
     <div class="slds-grid slds-gutters">
         <div class="slds-col slds-size_10-of-12">
-            <input type="text" placeholder="Type task.." class="slds-input" />
+            <input value={todoInput} type="text" placeholder="Type task.." onchange={inputChange} class="slds-input" />
         </div>
         <div class="slds-col slds-size_2-of-12">
             <lightning-button variant="brand" label="Submit" title="Submit" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>

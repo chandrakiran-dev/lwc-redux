@@ -9,8 +9,11 @@ const getStore = (thisArg, callback) =>{
     }
 }
 const prepareProps = (thisArg, store) => {
-    const state = thisArg.mapStateToProp(store.getState());
-    return Object.assign({}, thisArg.props, state)
+    if(thisArg.mapStateToProp){
+        const state = thisArg.mapStateToProp(store.getState());
+        return Object.assign({}, thisArg.props, state)
+    }
+    return thisArg.props;
 }
 
 export default class ReduxElement extends LightningElement {
