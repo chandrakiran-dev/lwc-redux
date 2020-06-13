@@ -9,8 +9,8 @@ const getStore = (thisArg, callback) =>{
     }
 }
 const prepareProps = (thisArg, store) => {
-    if(thisArg.mapStateToProp){
-        const state = thisArg.mapStateToProp(store.getState());
+    if(thisArg.mapStateToProps){
+        const state = thisArg.mapStateToProps(store.getState());
         return Object.assign({}, thisArg.props, state)
     }
     return thisArg.props;
@@ -25,8 +25,8 @@ export default class ReduxElement extends LightningElement {
             if(store){
                 this.props = prepareProps(this, store);
                 let actions = {};
-                if(this.mapActionToProp){
-                    actions = this.mapActionToProp();
+                if(this.mapDispatchToProps){
+                    actions = this.mapDispatchToProps();
                 }   
                 this.props = Object.assign({}, this.props, bindActionCreators(actions, store.dispatch))
                 this.unsubscribe = store.subscribe(this.handleChange.bind(this))

@@ -3,7 +3,7 @@ import {VISIBILITY_FILTER} from 'c/todoAppConstant';
 import {filter} from 'c/todoAppActions';
 export default class TodoFilter extends ReduxElement {
     visibilityFilter = VISIBILITY_FILTER
-    mapActionToProp(){
+    mapDispatchToProps(){
         return {setFilter : filter.setFilter}
     }
     handleClick(event){

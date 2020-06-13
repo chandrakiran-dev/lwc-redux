@@ -1,7 +1,7 @@
 import {ReduxElement} from 'c/lwcRedux';
 
 export default class SongList extends ReduxElement {
-    mapStateToProp(state){
+    mapStateToProps(state){
         return {songs: state.songs};
     }
 }

@@ -1,7 +1,7 @@
 import { ReduxElement } from 'c/lwcRedux';
 
 export default class TodoList extends ReduxElement {
-    mapStateToProp(state){
+    mapStateToProps(state){
         const { filter, todo } = state;
         let allIds;
         if(filter != 'All'){

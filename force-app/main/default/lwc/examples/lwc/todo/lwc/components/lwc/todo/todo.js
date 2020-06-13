@@ -6,10 +6,10 @@ import {todo} from 'c/todoAppActions';
 export default class Todo extends ReduxElement {
     @api recordId;
     status = STATUS;
-    mapStateToProp(state){
+    mapStateToProps(state){
         return {record : state.todo.byIds[this.recordId]}
     }
-    mapActionToProp(){
+    mapDispatchToProps(){
         return {changeTodoStatus : todo.changeTodoStatus};
     }
     handleStatusChange(event){

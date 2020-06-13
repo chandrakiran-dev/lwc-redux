@@ -2,7 +2,7 @@ import { ReduxElement } from 'c/lwcRedux';
 import {start, stop, reset, createLap} from 'c/stopWatchAction';
 
 export default class StopWatch extends ReduxElement {
-    mapStateToProp(state){
+    mapStateToProps(state){
         return {
             milliSec : this.checkTime(state.milliSec), 
             sec : this.checkTime(state.sec), 
@@ -11,7 +11,7 @@ export default class StopWatch extends ReduxElement {
             interval: state.interval
         }
     }
-    mapActionToProp(){
+    mapDispatchToProps(){
         return {start, stop, reset, createLap}
     }
     checkTime(time) {

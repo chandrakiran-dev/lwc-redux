@@ -3,10 +3,10 @@ import { ReduxElement } from 'c/lwcRedux';
 import { selectSong } from 'c/songActions';
 export default class SongCard extends ReduxElement {
     @api song={}
-    mapStateToProp(state){
+    mapStateToProps(state){
         return {selectedSong: state.selectedSong};
     }
-    mapActionToProp(){
+    mapDispatchToProps(){
         return {selectSong};
     }
     handleClick(){

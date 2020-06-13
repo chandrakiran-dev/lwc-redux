@@ -4,7 +4,7 @@ import {todo} from 'c/todoAppActions';
 
 export default class AddTodo extends ReduxElement {
     @track todoInput = '';
-    mapActionToProp(){
+    mapDispatchToProps(){
         return {addTodo : todo.addTodo};
     }
     inputChange(event){
