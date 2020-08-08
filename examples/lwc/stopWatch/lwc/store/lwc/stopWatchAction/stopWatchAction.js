@@ -11,7 +11,7 @@ export const start = ()=> {
         dispatch({
             type:START_ACTION,
             payload: {interval}
-        })
+        });
 
     }
  }
