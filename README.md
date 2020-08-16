@@ -1,6 +1,6 @@
 # Introducing Redux with Lightning web components(LWC)
 
-[LWC-redux](http://lwc-redux.com/) is a official [LWC](https://developer.salesforce.com/blogs/2018/12/introducing-lightning-web-components.html) binding for [Redux](https://redux.js.org/introduction/getting-started#basic-example). It will allow your Lightning Web Components to read data form a Redux store, and dispatch actions to the store to update data.
+[LWC-redux](http://lwc-redux.com/) is a [LWC](https://developer.salesforce.com/blogs/2018/12/introducing-lightning-web-components.html) binding for [Redux](https://redux.js.org/introduction/getting-started#basic-example). It will allow your Lightning Web Components to read data from a Redux store, and dispatch actions to the store to update data.
 
 LWC-redux helps you to write application that behaves consistently and provide state management to the application. It's also separate the JS business and design layers.
 
