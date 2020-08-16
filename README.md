@@ -19,9 +19,9 @@ If you are using Redux with any kind of UI framework, you will normally use a "U
 
 LWC Redux is the Redux UI binding library for LWC. If you are using Redux and LWC together, you should also use LWC Redux to bind these two libraries.
 
-### It is the Redux UI Bindings for LWC.
-### It Encourages Good LWC Architecture.
-### It Implements Performance Optimizations For You
+##### It is the Redux UI Bindings for LWC.
+##### It Encourages Good LWC Architecture.
+##### It Implements Performance Optimizations For You
 
 [Click here for more information](http://lwc-redux.com/why-use-lwc-redux)
 
