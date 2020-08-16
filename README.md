@@ -34,4 +34,4 @@ To see how to use LWC Redux in practice, we’ll show a step-by-step example by 
 
 ## Examples
 
-[Refer Example page](http://lwc-redux.com/examples) or go to Examples folder in the repository.
+Go to Examples folder in the repository or [refer examples page](http://lwc-redux.com/examples)
