@@ -1,6 +1,7 @@
-import { ReduxElement } from 'c/lwcRedux';
+import { LightningElement} from 'lwc';
+import { Redux } from 'c/lwcRedux';
 
-export default class Laps extends ReduxElement {
+export default class Laps extends Redux(LightningElement) {
     mapStateToProps(state){
         return {laps : state.laps};
     }

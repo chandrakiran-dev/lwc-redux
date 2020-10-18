@@ -1,8 +1,8 @@
-import { track } from 'lwc';
-import { ReduxElement } from 'c/lwcRedux';
+import { LightningElement, track} from 'lwc';
+import { Redux } from 'c/lwcRedux';
 import {todo} from 'c/todoAppActions';
 
-export default class AddTodo extends ReduxElement {
+export default class AddTodo extends Redux(LightningElement) {
     @track todoInput = '';
     mapDispatchToProps(){
         return {addTodo : todo.addTodo};

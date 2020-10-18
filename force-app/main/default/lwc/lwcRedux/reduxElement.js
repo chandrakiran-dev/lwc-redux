@@ -19,7 +19,6 @@ const prepareProps = (thisArg, store) => {
 export default class ReduxElement extends LightningElement {
     @track props = {}
     unsubscribe;
-    currentState;
     connectedCallback(){
         getStore(this, (store) => {
             if(store){

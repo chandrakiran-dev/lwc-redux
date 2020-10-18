@@ -1,7 +1,7 @@
-import { api } from 'lwc';
-import { ReduxElement } from 'c/lwcRedux';
+import { LightningElement, api } from 'lwc';
+import { Redux } from 'c/lwcRedux';
 import { selectSong } from 'c/songActions';
-export default class SongCard extends ReduxElement {
+export default class SongCard extends Redux(LightningElement) {
     @api song={}
     mapStateToProps(state){
         return {selectedSong: state.selectedSong};

@@ -1,9 +1,9 @@
 import { LightningElement, api } from 'lwc';
-import { ReduxElement } from 'c/lwcRedux';
+import { Redux } from 'c/lwcRedux';
 import {STATUS} from 'c/todoAppConstant';
 import {todo} from 'c/todoAppActions';
 
-export default class Todo extends ReduxElement {
+export default class Todo extends Redux(LightningElement) {
     @api recordId;
     status = STATUS;
     mapStateToProps(state){

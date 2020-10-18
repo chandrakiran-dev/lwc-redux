@@ -18,5 +18,19 @@ export const bindActionCreators = (actions, dispatch) => {
     return window.Redux.bindActionCreators(actions, dispatch);
 }
 
-export {ReduxElement, registerListener, unregisterAllListeners};
+const getStore = (thisArg, callback) =>{
+    const eventStore = new CustomEvent('lwcredux__getstore', { bubbles: true,composed: true, detail : (store)=>{
+        alert('Okk')
+        callback(store);
+    }})
+    if(eventStore){
+        thisArg.dispatchEvent(eventStore);
+    }
+}
+
+export const Redux = (Superclass = Object) => {
+    return ReduxElement
+}
+
+export {registerListener, unregisterAllListeners};
 

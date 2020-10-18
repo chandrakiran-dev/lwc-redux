@@ -1,7 +1,8 @@
-import { ReduxElement } from 'c/lwcRedux';
+import { LightningElement} from 'lwc';
+import { Redux } from 'c/lwcRedux';
 import {start, stop, reset, createLap} from 'c/stopWatchAction';
 
-export default class StopWatch extends ReduxElement {
+export default class StopWatch extends Redux(LightningElement) {
     mapStateToProps(state){
         return {
             milliSec : this.checkTime(state.milliSec), 

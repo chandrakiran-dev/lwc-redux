@@ -6,6 +6,13 @@
             "package": "lwc-redux",
             "versionName": "Version 1.0",
             "versionNumber": "1.0.0.NEXT"
+        },
+        {
+            "path": "examples",
+            "default": false,
+            "package": "lwc-redux",
+            "versionName": "Version 1.0",
+            "versionNumber": "1.0.0.NEXT"
         }
     ],
     "namespace": "",

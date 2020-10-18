@@ -1,6 +1,7 @@
-import { ReduxElement } from 'c/lwcRedux';
+import { LightningElement} from 'lwc';
+import { Redux } from 'c/lwcRedux';
 
-export default class TodoList extends ReduxElement {
+export default class TodoList extends Redux(LightningElement) {
     mapStateToProps(state){
         const { filter, todo } = state;
         let allIds;
