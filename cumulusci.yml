@@ -1,0 +1,24 @@
+minimum_cumulusci_version: '3.21.1'
+project:
+    name: lwc-redux
+    package:
+        name: lwc-redux
+        api_version: '49.0'
+    git:
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/lwc-redux/tests
+            options:
+                outputdir: robot/lwc-redux/results
+
+    robot_testdoc:
+        options:
+            path: robot/lwc-redux/tests
+            output: robot/lwc-redux/doc/lwc-redux_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
