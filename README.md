@@ -36,3 +36,21 @@ To see how to use LWC Redux in practice, we’ll show a step-by-step example by 
 ## Examples
 
 Go to Examples folder in the repository or [refer examples page](http://lwc-redux.com/examples)
+
+## CCI Integration
+
+Add to your cumulusci.yml:
+
+```
+sources:
+  lwc-redux:
+    github: https://github.com/chandrakiran-dev/lwc-redux
+```
+
+Add to your cci flow:
+
+```
+task: lwc-redux:deploy
+options:
+    path: force-app/main/default
+```
