@@ -4,6 +4,7 @@
 /src.orig
 /src
 .localdevserver
+.eslintcache
 
 # LWC VSCode autocomplete
 **/lwc/jsconfig.json
