@@ -20,7 +20,9 @@ If you are using Redux with any kind of UI framework, you will normally use a "U
 LWC Redux is the Redux UI binding library for LWC. If you are using Redux and LWC together, you should also use LWC Redux to bind these two libraries.
 
 ##### It is the Redux UI Bindings for LWC.
+
 ##### It Encourages Good LWC Architecture.
+
 ##### It Implements Performance Optimizations For You
 
 [Click here for more information](http://lwc-redux.com/why-use-lwc-redux)
@@ -31,7 +33,24 @@ To see how to use LWC Redux in practice, we’ll show a step-by-step example by 
 
 [Click here for basic tutorial](http://lwc-redux.com/basic-tutorial)
 
-
 ## Examples
 
 Go to Examples folder in the repository or [refer examples page](http://lwc-redux.com/examples)
+
+## CCI Integration
+
+Add to your cumulusci.yml:
+
+```
+sources:
+  lwc-redux:
+    github: https://github.com/chandrakiran-dev/lwc-redux
+```
+
+Add to your cci flow:
+
+```
+task: lwc-redux:deploy
+options:
+    path: force-app/main/default
+```
