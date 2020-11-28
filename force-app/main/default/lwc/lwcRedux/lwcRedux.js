@@ -38,5 +38,5 @@ export const Redux = (Superclass = Object) => {
     return ReduxElement
 }
 
-export {registerListener, unregisterAllListeners};
+export {ReduxElement, registerListener, unregisterAllListeners};
 
