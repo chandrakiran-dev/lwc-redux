@@ -1,3 +1,9 @@
+/**
+ * This is lwc-redux component js file. This expose all the method that can be use in other components. 
+ * 
+ * @author : https://github.com/chandrakiran-dev
+ */
+
 import ReduxElement from './reduxElement';
 import {registerListener, unregisterAllListeners} from './reduxHandler';
 export const combineReducers = reducers => {

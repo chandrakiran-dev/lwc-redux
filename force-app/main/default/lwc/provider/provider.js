@@ -1,3 +1,9 @@
+/**
+ * THis is provider component that's load the redux library. This will be tom most component for the lwc-redux application.
+ * 
+ * @author : https://github.com/chandrakiran-dev
+ */
+
 import { LightningElement, api , track} from 'lwc';
 import { loadScript } from 'lightning/platformResourceLoader';
 import reduxURL from '@salesforce/resourceUrl/redux';

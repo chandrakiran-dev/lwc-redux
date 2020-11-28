@@ -1,3 +1,9 @@
+/**
+ * This file contains the all the helper method for the LWC-redux
+ * 
+ * @author : https://github.com/chandrakiran-dev
+ */
+
 const reduxEvent = [];
 export const registerListener = (eventName, callback, thisArg) => {
     if (!reduxEvent[eventName]) {

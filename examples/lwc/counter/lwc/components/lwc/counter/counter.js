@@ -3,10 +3,6 @@ import { Redux } from 'c/lwcRedux';
 import {increment, decrement, reset} from 'c/counterActions';
 
 export default class Counter extends Redux(LightningElement) {
-    
-    connectedCallback(){
-        super.connectedCallback();
-    }
 
     mapStateToProps(state){
         return {counter: state.counter};

@@ -1,3 +1,9 @@
+/**
+ * This file contains the ReduxElement that extends the LightningElement. This will be the parent component for all redux component
+ * 
+ * @author : https://github.com/chandrakiran-dev
+ */
+
 import { LightningElement, track} from 'lwc';
 import {bindActionCreators} from './lwcRedux';
 const getStore = (thisArg, callback) =>{
@@ -8,6 +14,7 @@ const getStore = (thisArg, callback) =>{
         thisArg.dispatchEvent(eventStore);
     }
 }
+
 const prepareProps = (thisArg, store) => {
     if(thisArg.mapStateToProps){
         const state = thisArg.mapStateToProps(store.getState());
