@@ -21,6 +21,7 @@
     "packageAliases": {
         "lwc-redux": "0Ho2v000000bllSCAQ",
         "lwc-redux@1.0.0-1": "04t2v00000799S7AAI",
-        "lwc-redux@2.0.0-1": "04t2v0000079AtMAAU"
+        "lwc-redux@2.0.0-1": "04t2v0000079AtMAAU",
+        "lwc-redux@2.0.0-2": "04t2v0000079AtRAAU"
     }
 }
