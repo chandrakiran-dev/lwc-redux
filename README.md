@@ -1,13 +1,13 @@
 # Introducing Redux with Lightning web components(LWC)
 
-[LWC-redux](http://lwc-redux.com/) is a [LWC](https://developer.salesforce.com/blogs/2018/12/introducing-lightning-web-components.html) binding for [Redux](https://redux.js.org/introduction/getting-started#basic-example). It will allow your Lightning Web Components to read data from a Redux store, and dispatch actions to the store to update data.
+[LWC-redux](http://www.lwc-redux.com/) is a [LWC](https://developer.salesforce.com/blogs/2018/12/introducing-lightning-web-components.html) binding for [Redux](https://redux.js.org/introduction/getting-started#basic-example). It will allow your Lightning Web Components to read data from a Redux store, and dispatch actions to the store to update data.
 
 LWC-redux helps you to write application that behaves consistently and provide state management to the application. It's also separate the JS business and design layers.
 
 ## Installation
 
 To install the LWC-redux, we only need to click on the below button. It will redirect you to another page where you can select production/sandbox org and proceed with 'Login to Salesforce' button.
-[Click here to install](http://lwc-redux.com/quick-start#installation)
+[Click here to install](http://www.lwc-redux.com/quick-start#installation)
 
 There are two types of developer processes or models supported in Salesforce Extensions for VS Code and Salesforce CLI. These models are explained below. Each model offers pros and cons and is fully supported.
 
@@ -25,17 +25,17 @@ LWC Redux is the Redux UI binding library for LWC. If you are using Redux and LW
 
 ##### It Implements Performance Optimizations For You
 
-[Click here for more information](http://lwc-redux.com/why-use-lwc-redux)
+[Click here for more information](http://www.lwc-redux.com/why-use-lwc-redux)
 
 ## Basic Tutorial
 
 To see how to use LWC Redux in practice, we’ll show a step-by-step example by creating a todo list app.
 
-[Click here for basic tutorial](http://lwc-redux.com/basic-tutorial)
+[Click here for basic tutorial](http://www.lwc-redux.com/basic-tutorial)
 
 ## Examples
 
-Go to Examples folder in the repository or [refer examples page](http://lwc-redux.com/examples)
+Go to Examples folder in the repository or [refer examples page](http://www.lwc-redux.com/examples)
 
 ## CCI Integration
 
