@@ -25,28 +25,28 @@ const prepareProps = (thisArg, store) => {
 
 export default class ReduxElement extends LightningElement {
     @track props = {}
-    unsubscribe;
+    _unsubscribe;
     connectedCallback(){
         getStore(this, (store) => {
             if(store){
-                this.props = prepareProps(this, store);
                 let actions = {};
                 if(this.mapDispatchToProps){
                     actions = this.mapDispatchToProps();
                 }   
+                this.props = prepareProps(this, store);
                 this.props = Object.assign({}, this.props, bindActionCreators(actions, store.dispatch))
-                this.unsubscribe = store.subscribe(this.handleChange.bind(this))
+                this._unsubscribe = store.subscribe(this._handleStoreChange.bind(this))
             }
         })
     }
 
     disconnectedCallback(){
-        if(this.unsubscribe){
-            this.unsubscribe();
+        if(this._unsubscribe){
+            this._unsubscribe();
         }
     }
 
-    forceUpdate(){
+    _forceUpdate(){
         getStore(this, (store) => {
             if(store){
                 this.props = prepareProps(this, store);
@@ -55,7 +55,7 @@ export default class ReduxElement extends LightningElement {
         this.props = Object.assign({}, this.props);
     }
 
-    handleChange() {
-        this.forceUpdate()
+    _handleStoreChange() {
+        this._forceUpdate()
     }
 }
