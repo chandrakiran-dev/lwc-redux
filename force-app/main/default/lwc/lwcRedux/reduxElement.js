@@ -7,18 +7,28 @@
 import { LightningElement, track} from 'lwc';
 import {bindActionCreators} from './lwcRedux';
 const getStore = (thisArg, callback) =>{
-    const eventStore = new CustomEvent('lwcredux__getstore', { bubbles: true,composed: true, detail : (store)=>{
-        callback(store);
-    }})
-    if(eventStore){
-        thisArg.dispatchEvent(eventStore);
+    try{
+        const eventStore = new CustomEvent('lwcredux__getstore', { bubbles: true,composed: true, detail : (store)=>{
+            callback(store);
+        }})
+        if(eventStore){
+            thisArg.dispatchEvent(eventStore);
+        }
+    }
+    catch(error){
+        console.error(error)
     }
 }
 
 const prepareProps = (thisArg, store) => {
-    if(thisArg.mapStateToProps){
-        const state = thisArg.mapStateToProps(store.getState());
-        return Object.assign({}, thisArg.props, state)
+    try{
+        if(thisArg.mapStateToProps){
+            const state = thisArg.mapStateToProps(store.getState());
+            return Object.assign({}, thisArg.props, state)
+        }
+    }
+    catch(error){
+        console.error(error)
     }
     return thisArg.props;
 }
@@ -29,13 +39,19 @@ export default class ReduxElement extends LightningElement {
     connectedCallback(){
         getStore(this, (store) => {
             if(store){
-                let actions = {};
-                if(this.mapDispatchToProps){
-                    actions = this.mapDispatchToProps();
-                }   
-                this.props = prepareProps(this, store);
-                this.props = Object.assign({}, this.props, bindActionCreators(actions, store.dispatch))
-                this._unsubscribe = store.subscribe(this._handleStoreChange.bind(this))
+                try{
+                    let actions = {};
+                    if(this.mapDispatchToProps){
+                        actions = this.mapDispatchToProps();
+                    }   
+                    this.props = prepareProps(this, store);
+                    this.props = Object.assign({}, this.props, bindActionCreators(actions, store.dispatch))
+                    this._unsubscribe = store.subscribe(this._handleStoreChange.bind(this))
+                }
+                catch(error){
+                    console.error(error)
+                }
+                
             }
         })
     }
@@ -48,8 +64,13 @@ export default class ReduxElement extends LightningElement {
 
     _forceUpdate(){
         getStore(this, (store) => {
-            if(store){
-                this.props = prepareProps(this, store);
+            try{
+                if(store){
+                    this.props = prepareProps(this, store);
+                }
+            }
+            catch(error){
+                console.error(error)
             }
         })
         this.props = Object.assign({}, this.props);

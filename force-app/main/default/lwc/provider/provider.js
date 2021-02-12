@@ -8,6 +8,7 @@ import { LightningElement, api , track} from 'lwc';
 import { loadScript } from 'lightning/platformResourceLoader';
 import reduxURL from '@salesforce/resourceUrl/redux';
 import reduxThunkURL from '@salesforce/resourceUrl/reduxThunk';
+import reduxLoggerURL from '@salesforce/resourceUrl/reduxLogger';
 
 export default class Provider extends LightningElement {
     @api _store;
@@ -22,22 +23,33 @@ export default class Provider extends LightningElement {
         }
     }
     async connectedCallback(){
-        if(!window.Redux){
-            await Promise.all([
-                loadScript(this, reduxURL),
-                loadScript(this, reduxThunkURL)
-            ]);
-            
+        try{
+            if(!window.Redux){
+                await Promise.all([
+                    loadScript(this, reduxURL),
+                    loadScript(this, reduxThunkURL),
+                    loadScript(this, reduxLoggerURL)
+                ]);
+            }
+            this.template.addEventListener('lwcredux__getstore', this.handleGetStore.bind(this));
+            this.dispatchEvent(new CustomEvent('init'));
+            setTimeout(() =>{
+                this.loadCompleted = true;
+            })
         }
-        this.template.addEventListener('lwcredux__getstore', this.handleGetStore.bind(this));
-        this.dispatchEvent(new CustomEvent('init'));
-        setTimeout(() =>{
-            this.loadCompleted = true;
-        })
+        catch(error){
+            console.error(error)
+        }
     }
     handleGetStore(event){
-        let callback = event.detail
-        callback(this._store);
+        try{
+            event.stopPropagation();
+            let callback = event.detail
+            callback(this._store);
+        }
+        catch(error){
+            console.error(error)
+        }
     }
     getStore(){
         return this._store;
