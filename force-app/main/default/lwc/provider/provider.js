@@ -33,6 +33,7 @@ export default class Provider extends LightningElement {
             }
             this.template.addEventListener('lwcredux__getstore', this.handleGetStore.bind(this));
             this.dispatchEvent(new CustomEvent('init'));
+            
             setTimeout(() =>{
                 this.loadCompleted = true;
             })
