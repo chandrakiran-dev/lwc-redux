@@ -73,7 +73,7 @@ const initialLogger = {
     logErrors: true,
     collapsed: undefined,
     predicate: undefined,
-    duration: false,
+    duration: false, // By default, duration is false
     timestamp: true,
     stateTransformer: state => JSON.parse(JSON.stringify(state)),
     actionTransformer: action => JSON.parse(JSON.stringify(action)),
@@ -85,7 +85,7 @@ const initialLogger = {
       nextState: () => '#4CAF50',
       error: () => '#F20404',
     },
-    diff: false,
+    diff: false, // By default, diff is false
     diffPredicate: undefined,
 };
 
