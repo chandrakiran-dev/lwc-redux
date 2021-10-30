@@ -4,8 +4,8 @@
             "path": "force-app",
             "default": true,
             "package": "lwc-redux",
-            "versionName": "Version 2.0",
-            "versionNumber": "2.0.0.NEXT"
+            "versionName": "Version 3.0",
+            "versionNumber": "3.0.0.NEXT"
         },
         {
             "path": "examples",
@@ -23,6 +23,7 @@
         "lwc-redux@1.0.0-1": "04t2v00000799S7AAI",
         "lwc-redux@2.0.0-1": "04t2v0000079AtMAAU",
         "lwc-redux@2.0.0-2": "04t2v0000079AtRAAU",
-        "lwc-redux@2.0.0-4": "04t2v0000079B7xAAE"
+        "lwc-redux@2.0.0-4": "04t2v0000079B7xAAE",
+        "lwc-redux@3.0.0-1": "04t2v000007GTFkAAO"
     }
 }
